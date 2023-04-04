@@ -1,0 +1,88 @@
+<!--<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>supervised_user_circle</mat-icon>
+  </button>
+  <span>Data Extract</span>
+  <span class="example-spacer"></span>
+
+  button mat-raised-button color="warn" routerLink="/home">Add Rules</button><mat-icon></mat-icon>
+  <button mat-raised-button color="warn" (click)="openDialog()">Add Tamplate</button>
+
+</mat-toolbar>-->
+
+<div class="container">
+  <div style="margin-top: 10px;">
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="openDialog()">Add Template</button>
+    </div>
+
+
+    <mat-form-field >
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="_id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+          <td mat-cell *matCellDef="let row"> {{row._id}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+          <td mat-cell *matCellDef="let element; let i = index;"> {{i+1}} </td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+          <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="created_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Created_Date </th>
+          <td mat-cell *matCellDef="let row"> {{row.created_date | date}} </td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row">
+
+            <button mat-icon-button routerLink="/template" (click)="getone(row.name)" color="primary">
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button (click)="deleteTemplate(row._id)" mat-icon-button color="warm">
+              <mat-icon>delete</mat-icon>
+            </button>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+        <!-- sin no hay datos -->
+
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[10, 4, 6, 10]" aria-label="Mostrar registros a la vez"></mat-paginator>
+    </div>
+
+  </div>
+</div>
+

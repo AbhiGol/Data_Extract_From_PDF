@@ -1,0 +1,28 @@
+example-spacer {
+  flex: 1 1 auto;
+}
+
+table {
+  width: 100%;
+  color: aquamarine;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  width: 100%;
+}
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.button-container {
+  position: relative;
+  width: 100%;
+  bottom: -30px;
+}
+
+.button-container button {
+  position: absolute;
+  right: 0;
+}
